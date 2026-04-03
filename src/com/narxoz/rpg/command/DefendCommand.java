@@ -5,6 +5,7 @@ import com.narxoz.rpg.arena.ArenaFighter;
 public class DefendCommand implements ActionCommand {
     private final ArenaFighter target;
     private final double dodgeBoost;
+    private boolean executed = false;
 
     public DefendCommand(ArenaFighter target, double dodgeBoost) {
         this.target = target;
@@ -13,20 +14,24 @@ public class DefendCommand implements ActionCommand {
 
     @Override
     public void execute() {
-        // TODO: Apply the dodge boost using target.modifyDodgeChance(dodgeBoost).
-        // TODO: This boost is temporary — it applies until the next incoming attack.
-        //       For this assignment, the boost persists until undo() is called.
+        // Батырдың жалтару (dodge) мүмкіндігін уақытша арттырамыз
+        target.modifyDodgeChance(dodgeBoost);
+        this.executed = true;
+        System.out.println("[Command] Defend: " + target.getName() + " boosted dodge chance by " + (dodgeBoost * 100) + "%.");
     }
 
     @Override
     public void undo() {
-        // TODO: Remove the dodge boost by calling target.modifyDodgeChance(-dodgeBoost).
-        // Note: This is most meaningful when the command is still queued and not yet executed.
+        if (executed) {
+            target.modifyDodgeChance(-dodgeBoost);
+            this.executed = false;
+            System.out.println("[Command] Undo Defend: Removed dodge boost from " + target.getName() + ".");
+        }
     }
 
     @Override
     public String getDescription() {
-        // TODO: Return a readable summary, e.g. "Defend (dodge boost: +0.15)".
-        return "TODO";
+        // обьеснение
+        return "Defend (dodge boost: +" + (int)(dodgeBoost * 100) + "%)";
     }
 }
