@@ -11,10 +11,21 @@ public class BlockHandler extends DefenseHandler {
 
     @Override
     public void handle(int incomingDamage, ArenaFighter target) {
-        // TODO: Calculate how much damage is blocked: (int)(incomingDamage * blockPercent).
-        // TODO: Subtract the blocked amount from incomingDamage to get the remainder.
-        // TODO: Print a block message showing how much was blocked.
-        // TODO: Always pass the remainder to the next handler (block reduces but never stops the chain).
-        // Design question: what should happen if the remainder reaches 0 or below?
+        // 1. Қалқанмен қанша уронды қайтарғанымызды есептейміз
+        int blockedAmount = (int) (incomingDamage * blockPercent);
+
+        // 2. оставший урон
+        int remainder = incomingDamage - blockedAmount;
+
+        if (remainder < 0) {
+            remainder = 0;
+        }
+
+        // 3. собщения про блок
+        System.out.println("[Block] " + target.getName() + " blocked " + blockedAmount +
+                " damage (" + (int)(blockPercent * 100) + "% reduction).");
+
+        // 4. отпрвим на хендлер
+        super.passToNext(remainder, target);
     }
 }
