@@ -35,7 +35,9 @@ This homework continues the RPG series. In this phase, we implement two **behavi
 
 ---
 UML Diagrams
-Command Pattern UML (Action Hierarchy)  
+Command Pattern UML (Action Hierarchy)  action.pattern.png
+
+
 ## Project Structure
 ```text
 homework-rpg-6/
