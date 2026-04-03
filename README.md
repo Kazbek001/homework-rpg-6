@@ -35,7 +35,9 @@ This homework continues the RPG series. In this phase, we implement two **behavi
 
 ---
 UML Diagrams
-Command Pattern UML (Action Hierarchy) https://github.com/Kazbek001/homework-rpg-6/blob/main/src/com/narxoz/rpg/action.pattern.png
+1 Command Pattern UML (Action Hierarchy) https://github.com/Kazbek001/homework-rpg-6/blob/main/src/com/narxoz/rpg/action.pattern.png
+
+2 Сhair.uml.png    https://github.com/Kazbek001/homework-rpg-6/blob/main/src/com/narxoz/rpg/chair.uml.png
 
 
 
